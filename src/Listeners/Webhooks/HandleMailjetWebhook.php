@@ -84,7 +84,7 @@ class HandleMailjetWebhook implements ShouldQueue
 
     private function handleDelivery(string $messageId, array $content): void
     {
-        $timestamp = $this->extractTimestamp($content, 'time');
+        $timestamp = $this->extractTimestamp($content);
 
         $this->emailWebhookService->handleDelivery($messageId, $timestamp);
     }
@@ -114,7 +114,7 @@ class HandleMailjetWebhook implements ShouldQueue
 
     private function handleBounce(string $messageId, array $content): void
     {
-        $timestamp = $this->extractTimestamp($content, 'time');
+        $timestamp = $this->extractTimestamp($content);
         $description = Arr::get($content, 'comment');
 
         $permanent = (bool) Arr::get($content, 'hard_bounce');

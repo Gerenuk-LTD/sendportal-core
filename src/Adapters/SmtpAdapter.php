@@ -72,13 +72,11 @@ class SmtpAdapter extends BaseMailAdapter
 
     protected function resolveMessage(string $subject, string $content, string $fromEmail, string $fromName, string $toEmail): Email
     {
-        $msg = (new Email())
+        return (new Email())
             ->from(new Address($fromEmail, $fromName))
             ->to($toEmail)
             ->subject($subject)
             ->html($content);
-
-        return $msg;
     }
 
     protected function resolveMessageId($result): string

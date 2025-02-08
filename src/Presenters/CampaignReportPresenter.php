@@ -148,7 +148,7 @@ class CampaignReportPresenter
          * @var int $timespan
          * @var array $item
          */
-        foreach ($this->getTimeSpanIntervals() as $timespan => $item) {
+        foreach (array_keys($this->getTimeSpanIntervals()) as $timespan) {
             if ($last->copy()->subHour()->lte($first->copy()->addSeconds($timespan))) {
                 return $timespan;
             }

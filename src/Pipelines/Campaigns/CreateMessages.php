@@ -162,7 +162,7 @@ class CreateMessages
         // it has already been dispatched. This makes the dispatch fault-tolerant
         // and prevent dispatching the same message to the same subscriber
         // more than once
-        if ($message = $this->findMessage($campaign, $subscriber)) {
+        if (($message = $this->findMessage($campaign, $subscriber)) instanceof \Sendportal\Base\Models\Message) {
             \Log::info('Message has previously been created campaign=' . $campaign->id . ' subscriber=' . $subscriber->id);
 
             return $message;

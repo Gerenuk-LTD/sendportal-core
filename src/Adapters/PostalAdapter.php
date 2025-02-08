@@ -8,13 +8,15 @@ use DomainException;
 use Illuminate\Support\Arr;
 use Postal\Client;
 use Postal\SendMessage;
+use SendGrid\Mail\TypeException;
 use Sendportal\Base\Services\Messages\MessageTrackingOptions;
+use Throwable;
 
 class PostalAdapter extends BaseMailAdapter
 {
     /**
      * @throws TypeException
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function send(string $fromEmail, string $fromName, string $toEmail, string $subject, MessageTrackingOptions $trackingOptions, string $content): string
     {
@@ -34,7 +36,7 @@ class PostalAdapter extends BaseMailAdapter
 
     protected function resolveMessageId($response): string
     {
-        foreach ($response->recipients() as $email => $message) {
+        foreach ($response->recipients() as $message) {
             return (string) $message->id();
         }
 

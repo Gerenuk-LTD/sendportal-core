@@ -49,7 +49,7 @@ class SubscribersController extends Controller
         )->withQueryString();
         $tags = $this->tagRepo->pluck(Sendportal::currentWorkspaceId(), 'name', 'id');
 
-        return view('sendportal::subscribers.index', compact('subscribers', 'tags'));
+        return view('sendportal::subscribers.index', ['subscribers' => $subscribers, 'tags' => $tags]);
     }
 
     /**
@@ -60,7 +60,7 @@ class SubscribersController extends Controller
         $tags = $this->tagRepo->pluck(Sendportal::currentWorkspaceId());
         $selectedTags = [];
 
-        return view('sendportal::subscribers.create', compact('tags', 'selectedTags'));
+        return view('sendportal::subscribers.create', ['tags' => $tags, 'selectedTags' => $selectedTags]);
     }
 
     /**
@@ -90,7 +90,7 @@ class SubscribersController extends Controller
             ['tags', 'messages.source']
         );
 
-        return view('sendportal::subscribers.show', compact('subscriber'));
+        return view('sendportal::subscribers.show', ['subscriber' => $subscriber]);
     }
 
     /**
@@ -102,7 +102,7 @@ class SubscribersController extends Controller
         $tags = $this->tagRepo->pluck(Sendportal::currentWorkspaceId());
         $selectedTags = $subscriber->tags->pluck('name', 'id');
 
-        return view('sendportal::subscribers.edit', compact('subscriber', 'tags', 'selectedTags'));
+        return view('sendportal::subscribers.edit', ['subscriber' => $subscriber, 'tags' => $tags, 'selectedTags' => $selectedTags]);
     }
 
     /**

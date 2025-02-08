@@ -17,7 +17,7 @@ trait ThrottlesSending
 
                 return $closure();
             } catch (SesException $e) {
-                if ($e->getMessage() == 'Maximum sending rate exceeded.') {
+                if ($e->getMessage() === 'Maximum sending rate exceeded.') {
                     $sleepDuration = $this->resolveSleepDuration($attempt);
 
                     info("Maximum send rate exceeded. Sleeping for {$sleepDuration}");
@@ -28,6 +28,7 @@ trait ThrottlesSending
                 }
             }
         }
+        return null;
     }
 
     protected function resolveSleepDuration(int $attempt = 1, int $minSleepMilliseconds = 10, int $maxSleepMilliseconds = 5000): int

@@ -102,9 +102,8 @@ class MergeContentService
 
         $content = $this->mergeSubscriberTags($content, $message);
         $content = $this->mergeUnsubscribeLink($content, $message);
-        $content = $this->mergeWebviewLink($content, $message);
 
-        return $content;
+        return $this->mergeWebviewLink($content, $message);
     }
 
     protected function compileTags(string $content): string

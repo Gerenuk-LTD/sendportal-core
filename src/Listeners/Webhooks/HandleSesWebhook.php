@@ -76,7 +76,7 @@ class HandleSesWebhook implements ShouldQueue
                 break;
 
             case 'reject':
-                $this->handleReject($messageId, $event);
+                $this->handleReject();
                 break;
 
             case 'delivery':
@@ -119,7 +119,7 @@ class HandleSesWebhook implements ShouldQueue
         $this->emailWebhookService->handleOpen($messageId, $timestamp, $ipAddress);
     }
 
-    private function handleReject(string $messageId, array $event): void
+    private function handleReject(): void
     {
         // https://docs.aws.amazon.com/ses/latest/DeveloperGuide/event-publishing-retrieving-sns-contents.html#event-publishing-retrieving-sns-contents-reject-object
         // https://docs.aws.amazon.com/ses/latest/DeveloperGuide/event-publishing-retrieving-sns-examples.html#event-publishing-retrieving-sns-reject

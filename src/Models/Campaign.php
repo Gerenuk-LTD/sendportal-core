@@ -351,7 +351,7 @@ class Campaign extends BaseModel
 
     public function getActionRatio(int $actionCount, int $sentCount)
     {
-        if ($actionCount) {
+        if ($actionCount !== 0) {
             return $actionCount / $sentCount;
         }
 

@@ -18,7 +18,6 @@ class SelectField extends Component
     /** @var array|Collection  */
     public $options;
 
-    /** @var null */
     public $value;
 
     /** @var bool */
@@ -30,7 +29,6 @@ class SelectField extends Component
      * @param string $name
      * @param string $label
      * @param array $options
-     * @param null $value
      * @param bool $multiple
      */
     public function __construct(string $name, string $label = '', $options = [], $value = null, bool $multiple = false)

@@ -17,7 +17,6 @@ class TextField extends Component
     /** @var string */
     public $type;
 
-    /** @var null */
     public $value;
 
     /**
@@ -26,7 +25,6 @@ class TextField extends Component
      * @param string $name
      * @param string $label
      * @param string $type
-     * @param null $value
      */
     public function __construct(string $name, string $label = '', string $type = 'text', $value = null)
     {

@@ -30,14 +30,14 @@ class EmailServicesController extends Controller
     {
         $emailServices = $this->emailServices->all(Sendportal::currentWorkspaceId());
 
-        return view('sendportal::email_services.index', compact('emailServices'));
+        return view('sendportal::email_services.index', ['emailServices' => $emailServices]);
     }
 
     public function create(): View
     {
         $emailServiceTypes = $this->emailServices->getEmailServiceTypes()->pluck('name', 'id');
 
-        return view('sendportal::email_services.create', compact('emailServiceTypes'));
+        return view('sendportal::email_services.create', ['emailServiceTypes' => $emailServiceTypes]);
     }
 
     /**
@@ -67,7 +67,7 @@ class EmailServicesController extends Controller
         $emailService = $this->emailServices->find(Sendportal::currentWorkspaceId(), $emailServiceId);
         $emailServiceType = $this->emailServices->findType($emailService->type_id);
 
-        return view('sendportal::email_services.edit', compact('emailServiceTypes', 'emailService', 'emailServiceType'));
+        return view('sendportal::email_services.edit', ['emailServiceTypes' => $emailServiceTypes, 'emailService' => $emailService, 'emailServiceType' => $emailServiceType]);
     }
 
     /**

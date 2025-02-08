@@ -36,7 +36,7 @@ class CampaignDispatchCommand extends Command
         $campaigns = $this->getQueuedCampaigns();
         $count = count($campaigns);
 
-        if (! $count) {
+        if ($count === 0) {
             return;
         }
 

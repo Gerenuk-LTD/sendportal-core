@@ -45,7 +45,7 @@ class DispatchTestMessage
     {
         $campaign = $this->resolveCampaign($workspaceId, $campaignId);
 
-        if (! $campaign) {
+        if (!$campaign instanceof \Sendportal\Base\Models\Campaign) {
             Log::error(
                 'Unable to get campaign to send test message.',
                 ['workspace_id' => $workspaceId, 'campaign_id' => $campaignId]

@@ -18,7 +18,7 @@ class NotEmpty implements Rule
     {
         $trimmed = trim(html_entity_decode(strip_tags($value)), "\t\n\r\0\x0B\xC2\xA0");
 
-        return ! empty($trimmed);
+        return $trimmed !== '' && $trimmed !== '0';
     }
 
     /**

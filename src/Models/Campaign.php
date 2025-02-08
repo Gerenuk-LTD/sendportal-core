@@ -180,7 +180,7 @@ class Campaign extends BaseModel
 
     public function getSentCountAttribute(): int
     {
-        return $this->sent_messages->count();
+        return $this->sent_messages()->count();
     }
 
     public function getUnsentCountAttribute(): int
@@ -258,7 +258,7 @@ class Campaign extends BaseModel
     public function getMergedContentAttribute(): ?string
     {
         if ($this->template_id) {
-            return str_replace(['{{content}}', '{{ content }}'], $this->content, $this->template->content);
+            return str_replace(['{{content}}', '{{ content }}'], $this->content ?? '', $this->template()->value('content'));
         }
 
         return $this->content;
@@ -351,7 +351,7 @@ class Campaign extends BaseModel
 
     public function getActionRatio(int $actionCount, int $sentCount)
     {
-        if ($actionCount) {
+        if ($actionCount !== 0) {
             return $actionCount / $sentCount;
         }
 

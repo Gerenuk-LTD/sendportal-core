@@ -99,7 +99,7 @@ class CampaignsController extends Controller
                 return $emailService;
             });
 
-        return view('sendportal::campaigns.create', compact('templates', 'emailServices'));
+        return view('sendportal::campaigns.create', ['templates' => $templates, 'emailServices' => $emailServices]);
     }
 
     /**
@@ -120,7 +120,7 @@ class CampaignsController extends Controller
     {
         $campaign = $this->campaigns->find(Sendportal::currentWorkspaceId(), $id);
 
-        return view('sendportal::campaigns.show', compact('campaign'));
+        return view('sendportal::campaigns.show', ['campaign' => $campaign]);
     }
 
     /**
@@ -137,7 +137,7 @@ class CampaignsController extends Controller
             });
         $templates = [null => '- None -'] + $this->templates->pluck($workspaceId);
 
-        return view('sendportal::campaigns.edit', compact('campaign', 'emailServices', 'templates'));
+        return view('sendportal::campaigns.edit', ['campaign' => $campaign, 'emailServices' => $emailServices, 'templates' => $templates]);
     }
 
     /**
@@ -170,7 +170,7 @@ class CampaignsController extends Controller
 
         $tags = $this->tags->all(Sendportal::currentWorkspaceId(), 'name');
 
-        return view('sendportal::campaigns.preview', compact('campaign', 'tags', 'subscriberCount'));
+        return view('sendportal::campaigns.preview', ['campaign' => $campaign, 'tags' => $tags, 'subscriberCount' => $subscriberCount]);
     }
 
     /**

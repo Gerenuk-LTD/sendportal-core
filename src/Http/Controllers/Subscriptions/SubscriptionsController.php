@@ -29,7 +29,7 @@ class SubscriptionsController extends Controller
     {
         $message = Message::with('subscriber')->where('hash', $messageHash)->first();
 
-        return view('sendportal::subscriptions.unsubscribe', compact('message'));
+        return view('sendportal::subscriptions.unsubscribe', ['message' => $message]);
     }
 
     /**
@@ -39,7 +39,7 @@ class SubscriptionsController extends Controller
     {
         $message = Message::with('subscriber')->where('hash', $messageHash)->first();
 
-        return view('sendportal::subscriptions.subscribe', compact('message'));
+        return view('sendportal::subscriptions.subscribe', ['message' => $message]);
     }
 
     /**

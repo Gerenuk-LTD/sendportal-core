@@ -404,10 +404,10 @@ class BaseEloquentRepository implements BaseEloquentInterface
      */
     protected function parseOrder($orderBy)
     {
-        if (substr($orderBy, -3) == 'Asc') {
+        if (substr($orderBy, -3) === 'Asc') {
             $this->setOrderDirection('asc');
             $orderBy = substr_replace($orderBy, '', -3);
-        } elseif (substr($orderBy, -4) == 'Desc') {
+        } elseif (substr($orderBy, -4) === 'Desc') {
             $this->setOrderDirection('desc');
             $orderBy = substr_replace($orderBy, '', -4);
         }

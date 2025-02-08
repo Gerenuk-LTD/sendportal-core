@@ -8,7 +8,6 @@ use DomainException;
 use Illuminate\Support\Arr;
 use Postal\Client;
 use Postal\Send\Message;
-use SendGrid\Mail\TypeException;
 use Sendportal\Base\Services\Messages\MessageTrackingOptions;
 use Throwable;
 

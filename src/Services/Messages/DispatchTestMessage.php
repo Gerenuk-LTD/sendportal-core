@@ -14,17 +14,13 @@ use Sendportal\Base\Services\Content\MergeContentService;
 
 class DispatchTestMessage
 {
-    /** @var ResolveEmailService */
-    protected $resolveEmailService;
+    protected ResolveEmailService $resolveEmailService;
 
-    /** @var RelayMessage */
-    protected $relayMessage;
+    protected RelayMessage $relayMessage;
 
-    /** @var MergeContentService */
-    protected $mergeContent;
+    protected MergeContentService $mergeContent;
 
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaignTenant;
+    protected CampaignTenantRepositoryInterface $campaignTenant;
 
     public function __construct(
         CampaignTenantRepositoryInterface $campaignTenant,

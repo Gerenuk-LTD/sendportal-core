@@ -11,17 +11,15 @@ class BaseModel extends Model
      *
      * Note that any boolean fields not in the fillable
      * array will not be automatically set in the repo
-     *
-     * @var array
      */
-    protected $booleanFields = [];
+    protected array $booleanFields = [];
 
     /**
      * Return all boolean fields for the model
      *
      * @return array
      */
-    public function getBooleanFields()
+    public function getBooleanFields(): array
     {
         return $this->booleanFields;
     }

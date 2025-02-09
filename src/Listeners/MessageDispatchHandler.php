@@ -11,11 +11,9 @@ use Sendportal\Base\Services\Messages\DispatchMessage;
 
 class MessageDispatchHandler implements ShouldQueue
 {
-    /** @var string */
-    public $queue = 'sendportal-message-dispatch';
+    public string $queue = 'sendportal-message-dispatch';
 
-    /** @var DispatchMessage */
-    protected $dispatchMessage;
+    protected DispatchMessage $dispatchMessage;
 
     public function __construct(DispatchMessage $dispatchMessage)
     {

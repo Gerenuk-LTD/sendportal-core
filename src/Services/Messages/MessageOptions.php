@@ -6,23 +6,17 @@ namespace Sendportal\Base\Services\Messages;
 
 class MessageOptions
 {
-    /** @var string */
-    private $to;
+    private string $to;
 
-    /** @var string */
-    private $fromEmail;
+    private string $fromEmail;
 
-    /** @var string */
-    private $fromName;
+    private string $fromName;
 
-    /** @var string */
-    private $subject;
+    private string $subject;
 
-    /** @var string */
-    private $body;
+    private string $body;
 
-    /** @var MessageTrackingOptions */
-    private $trackingOptions;
+    private MessageTrackingOptions $trackingOptions;
 
     /**
      * @return string

@@ -13,15 +13,9 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignDispatchRequest extends FormRequest
 {
-    /**
-     * @var CampaignTenantRepositoryInterface
-     */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
-    /**
-     * @var Campaign
-     */
-    protected $campaign;
+    protected Campaign $campaign;
 
     public function __construct(CampaignTenantRepositoryInterface $campaigns)
     {

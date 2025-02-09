@@ -16,13 +16,9 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignDispatchController extends Controller
 {
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
-    /**
-     * @var QuotaServiceInterface
-     */
-    protected $quotaService;
+    protected QuotaServiceInterface $quotaService;
 
     public function __construct(
         CampaignTenantRepositoryInterface $campaigns,

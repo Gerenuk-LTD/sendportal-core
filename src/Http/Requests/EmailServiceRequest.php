@@ -12,7 +12,7 @@ class EmailServiceRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,7 +22,7 @@ class EmailServiceRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
             'name' => ['required']
@@ -40,7 +40,7 @@ class EmailServiceRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         switch ((int) $this->input('type_id')) {
             case EmailServiceType::SES:

@@ -17,11 +17,9 @@ use Sendportal\Base\Services\Subscribers\ApiSubscriberService;
 
 class SubscribersController extends Controller
 {
-    /** @var SubscriberTenantRepositoryInterface */
-    protected $subscribers;
+    protected SubscriberTenantRepositoryInterface $subscribers;
 
-    /** @var ApiSubscriberService */
-    protected $apiService;
+    protected ApiSubscriberService $apiService;
 
     public function __construct(
         SubscriberTenantRepositoryInterface $subscribers,

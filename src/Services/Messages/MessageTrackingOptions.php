@@ -9,11 +9,9 @@ use Sendportal\Base\Models\Message;
 
 class MessageTrackingOptions
 {
-    /** @var bool */
-    private $isOpenTracking = true;
+    private bool $isOpenTracking = true;
 
-    /** @var bool */
-    private $isClickTracking = true;
+    private bool $isClickTracking = true;
 
     public static function fromMessage(Message $message): MessageTrackingOptions
     {

@@ -15,8 +15,7 @@ use Sendportal\Base\Repositories\TagTenantRepository;
 
 class TagsController extends Controller
 {
-    /** @var TagTenantRepository */
-    private $tagRepository;
+    private TagTenantRepository $tagRepository;
 
     public function __construct(TagTenantRepository $tagRepository)
     {

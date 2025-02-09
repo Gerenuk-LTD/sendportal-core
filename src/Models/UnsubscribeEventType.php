@@ -11,7 +11,7 @@ class UnsubscribeEventType extends BaseModel
     public const MANUAL_BY_ADMIN = 3;
     public const MANUAL_BY_SUBSCRIBER = 4;
 
-    public static $types = [
+    public static array $types = [
         1 => 'Bounced',
         2 => 'Complained',
         3 => 'Manual by Admin',
@@ -29,7 +29,7 @@ class UnsubscribeEventType extends BaseModel
      * @param int $id
      * @return mixed
      */
-    public static function findById($id): string
+    public static function findById(int $id): string
     {
         return \Arr::get(static::$types, $id);
     }

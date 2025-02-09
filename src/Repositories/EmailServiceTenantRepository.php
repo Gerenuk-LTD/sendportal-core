@@ -15,7 +15,7 @@ class EmailServiceTenantRepository extends BaseTenantRepository
     /**
      * @return mixed
      */
-    public function getEmailServiceTypes()
+    public function getEmailServiceTypes(): mixed
     {
         return EmailServiceType::orderBy('name')->get();
     }
@@ -24,7 +24,7 @@ class EmailServiceTenantRepository extends BaseTenantRepository
      * @param $emailServiceTypeId
      * @return mixed
      */
-    public function findType($emailServiceTypeId)
+    public function findType($emailServiceTypeId): mixed
     {
         return EmailServiceType::findOrFail($emailServiceTypeId);
     }
@@ -33,7 +33,7 @@ class EmailServiceTenantRepository extends BaseTenantRepository
      * @param $emailServiceTypeId
      * @return array
      */
-    public function findSettings($emailServiceTypeId)
+    public function findSettings($emailServiceTypeId): array
     {
         if ($emailService = EmailService::where('type_id', $emailServiceTypeId)->first()) {
             return $emailService->settings;

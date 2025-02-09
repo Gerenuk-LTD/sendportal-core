@@ -13,25 +13,13 @@ use Sendportal\Base\Services\Campaigns\CampaignStatisticsService;
 
 class DashboardController extends Controller
 {
-    /**
-     * @var SubscriberTenantRepositoryInterface
-     */
-    protected $subscribers;
+    protected SubscriberTenantRepositoryInterface $subscribers;
 
-    /**
-     * @var CampaignTenantRepositoryInterface
-     */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
-    /**
-     * @var MessageTenantRepositoryInterface
-     */
-    protected $messages;
+    protected MessageTenantRepositoryInterface $messages;
 
-    /**
-     * @var CampaignStatisticsService
-     */
-    protected $campaignStatisticsService;
+    protected CampaignStatisticsService $campaignStatisticsService;
 
     public function __construct(SubscriberTenantRepositoryInterface $subscribers, CampaignTenantRepositoryInterface $campaigns, MessageTenantRepositoryInterface $messages, CampaignStatisticsService $campaignStatisticsService)
     {

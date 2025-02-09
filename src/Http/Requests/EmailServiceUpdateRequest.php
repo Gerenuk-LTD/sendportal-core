@@ -12,7 +12,7 @@ class EmailServiceUpdateRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,7 +22,7 @@ class EmailServiceUpdateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => ['required'],
@@ -42,7 +42,7 @@ class EmailServiceUpdateRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'settings.secret.required_if' => __('The AWS Email Service requires you to enter a secret'),

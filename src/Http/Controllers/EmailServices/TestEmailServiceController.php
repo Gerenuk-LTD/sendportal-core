@@ -3,6 +3,7 @@
 namespace Sendportal\Base\Http\Controllers\EmailServices;
 
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Sendportal\Base\Facades\Sendportal;
 use Sendportal\Base\Http\Controllers\Controller;
@@ -13,15 +14,14 @@ use Sendportal\Base\Services\Messages\MessageOptions;
 
 class TestEmailServiceController extends Controller
 {
-    /** @var EmailServiceTenantRepository */
-    private $emailServices;
+    private EmailServiceTenantRepository $emailServices;
 
     public function __construct(EmailServiceTenantRepository $emailServices)
     {
         $this->emailServices = $emailServices;
     }
 
-    public function create(int $emailServiceId)
+    public function create(int $emailServiceId): View
     {
         $emailService = $this->emailServices->find(Sendportal::currentWorkspaceId(), $emailServiceId);
 

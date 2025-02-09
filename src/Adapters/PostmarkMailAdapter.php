@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace Sendportal\Base\Adapters;
 
 use Illuminate\Support\Arr;
+use Postmark\Models\PostmarkException;
 use Postmark\Models\PostmarkResponse;
 use Postmark\PostmarkClient;
 use Sendportal\Base\Services\Messages\MessageTrackingOptions;
 
 class PostmarkMailAdapter extends BaseMailAdapter
 {
-    /** @var PostmarkClient */
-    protected $client;
+    protected PostMarkClient $client;
 
+    /**
+     * @throws PostmarkException
+     */
     public function send(string $fromEmail, string $fromName, string $toEmail, string $subject, MessageTrackingOptions $trackingOptions, string $content): string
     {
         $result = $this->resolveClient()->sendEmail(

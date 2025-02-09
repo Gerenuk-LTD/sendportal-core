@@ -10,10 +10,11 @@ class CompleteCampaign
     /**
      * Mark the campaign as complete in the database
      *
-     * @param Campaign $schedule
+     * @param  Campaign  $schedule
+     * @param $next
      * @return Campaign
      */
-    public function handle(Campaign $schedule, $next)
+    public function handle(Campaign $schedule, $next): Campaign
     {
         $this->markCampaignAsComplete($schedule);
 

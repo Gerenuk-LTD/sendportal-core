@@ -15,8 +15,7 @@ use Sendportal\Base\Repositories\EmailServiceTenantRepository;
 
 class EmailServicesController extends Controller
 {
-    /** @var EmailServiceTenantRepository */
-    private $emailServices;
+    private EmailServiceTenantRepository $emailServices;
 
     public function __construct(EmailServiceTenantRepository $emailServices)
     {
@@ -61,7 +60,7 @@ class EmailServicesController extends Controller
     /**
      * @throws Exception
      */
-    public function edit(int $emailServiceId)
+    public function edit(int $emailServiceId): \Illuminate\Contracts\View\View
     {
         $emailServiceTypes = $this->emailServices->getEmailServiceTypes()->pluck('name', 'id');
         $emailService = $this->emailServices->find(Sendportal::currentWorkspaceId(), $emailServiceId);

@@ -13,8 +13,7 @@ use Sendportal\Base\Services\Messages\DispatchTestMessage;
 
 class CampaignTestController extends Controller
 {
-    /** @var DispatchTestMessage */
-    protected $dispatchTestMessage;
+    protected DispatchTestMessage $dispatchTestMessage;
 
     public function __construct(DispatchTestMessage $dispatchTestMessage)
     {

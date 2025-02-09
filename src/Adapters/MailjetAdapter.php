@@ -12,10 +12,9 @@ use Sendportal\Base\Services\Messages\MessageTrackingOptions;
 
 class MailjetAdapter extends BaseMailAdapter
 {
-    /** @var Client */
-    protected $client;
+    protected Client $client;
 
-    protected $urls = [
+    protected array $urls = [
         'Default' => 'api.mailjet.com',
         'US' => 'api.us.mailjet.com'
     ];

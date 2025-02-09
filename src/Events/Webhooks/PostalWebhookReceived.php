@@ -4,8 +4,7 @@ namespace Sendportal\Base\Events\Webhooks;
 
 class PostalWebhookReceived
 {
-    /** @var array */
-    public $payload;
+    public array $payload;
 
     public function __construct(array $payload)
     {

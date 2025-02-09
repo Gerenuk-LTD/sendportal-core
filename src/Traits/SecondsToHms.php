@@ -10,7 +10,7 @@ trait SecondsToHms
      * @param int|string $seconds
      * @return string
      */
-    protected function secondsToHms($seconds): string
+    protected function secondsToHms(int|string $seconds): string
     {
         $hours = floor($seconds / 3600);
         $minutes = floor($seconds / 60) % 60;

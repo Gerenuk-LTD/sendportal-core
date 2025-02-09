@@ -13,7 +13,7 @@ interface SubscriberTenantRepositoryInterface extends BaseTenantInterface
 {
     public function syncTags(Subscriber $subscriber, array $tags = []);
 
-    public function countActive($workspaceId): int;
+    public function countActive(int $workspaceId): int;
 
     public function getRecentSubscribers(int $workspaceId): Collection;
 

@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace Sendportal\Base\View\Components;
 
+use Closure;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class FieldWrapper extends Component
 {
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $label;
+    public string $label;
 
-    /** @var string */
-    public $wrapperClass;
+    public string $wrapperClass;
 
     /**
      * Create the component instance.
@@ -47,9 +46,9 @@ class FieldWrapper extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|\Closure|string
+     * @return View|Closure|string
      */
-    public function render()
+    public function render(): Closure|string|View
     {
         return view('sendportal::components.field-wrapper');
     }

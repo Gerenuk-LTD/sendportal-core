@@ -10,8 +10,7 @@ use Sendportal\Base\Models\EmailService;
 
 class RelayMessage
 {
-    /** @var MailAdapterFactory */
-    protected $mailAdapter;
+    protected MailAdapterFactory $mailAdapter;
 
     public function __construct(MailAdapterFactory $mailAdapter)
     {

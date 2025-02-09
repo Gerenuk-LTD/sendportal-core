@@ -8,7 +8,6 @@ class CampaignStatus extends BaseModel
 {
     protected $table = 'sendportal_campaign_statuses';
 
-    /** @var bool */
     public $timestamps = false;
 
     public const STATUS_DRAFT = 1;

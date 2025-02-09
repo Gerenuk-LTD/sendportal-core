@@ -8,48 +8,39 @@ class BaseEloquentRepository implements BaseEloquentInterface
 {
     /**
      * Model name
-     *
-     * @var string
      */
-    protected $modelName;
+    protected string $modelName;
 
     /**
      * Current Object instance
-     *
-     * @var object
      */
-    protected $instance;
+    protected object $instance;
 
     /**
      * Order Options
-     *
-     * @var array
      */
-    protected $orderOptions = [];
+    protected array $orderOptions = [];
 
     /**
      * Default order by
-     *
-     * @var string
      */
-    private $orderBy = 'name';
+    private string $orderBy = 'name';
 
     /**
      * Default order direction
-     *
-     * @var string
      */
-    private $orderDirection = 'asc';
+    private string $orderDirection = 'asc';
 
     /**
      * Return all records
      *
-     * @param string $orderBy
-     * @param array $relations
-     * @param array $parameters
+     * @param  string  $orderBy
+     * @param  array  $relations
+     * @param  array  $parameters
      * @return mixed
+     * @throws \Exception
      */
-    public function all($orderBy = 'id', array $relations = [], array $parameters = [])
+    public function all(string $orderBy = 'id', array $relations = [], array $parameters = []): mixed
     {
         $instance = $this->getQueryBuilder();
 
@@ -65,13 +56,14 @@ class BaseEloquentRepository implements BaseEloquentInterface
     /**
      * Return paginated items
      *
-     * @param string $orderBy
-     * @param array $relations
-     * @param int $paginate
-     * @param array $parameters
+     * @param  string  $orderBy
+     * @param  array  $relations
+     * @param  int  $paginate
+     * @param  array  $parameters
      * @return mixed
+     * @throws \Exception
      */
-    public function paginate($orderBy = 'name', array $relations = [], $paginate = 25, array $parameters = [])
+    public function paginate(string $orderBy = 'name', array $relations = [], int $paginate = 25, array $parameters = []): mixed
     {
         $instance = $this->getQueryBuilder();
 
@@ -87,8 +79,8 @@ class BaseEloquentRepository implements BaseEloquentInterface
     /**
      * Apply parameters, which can be extended in child classes for filtering
      *
-     * @param $query
-     * @param array $filters
+     * @param $instance
+     * @param  array  $filters
      * @return mixed
      */
     protected function applyFilters($instance, array $filters = [])
@@ -103,7 +95,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function getBy(array $parameters, array $relations = [])
+    public function getBy(array $parameters, array $relations = []): mixed
     {
         $instance = $this->getQueryBuilder()
             ->with($relations);
@@ -123,7 +115,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function pluck($fieldName = 'name', $fieldId = 'id')
+    public function pluck(string $fieldName = 'name', string $fieldId = 'id'): mixed
     {
         $instance = $this->getQueryBuilder();
 
@@ -143,7 +135,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function pluckBy($field, $value, $listFieldName = 'name', $listFieldId = 'id')
+    public function pluckBy(string $field, string|array $value, string $listFieldName = 'name', string $listFieldId = 'id'): mixed
     {
         $instance = $this->getQueryBuilder();
 
@@ -166,7 +158,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function find($id, array $relations = [])
+    public function find(int $id, array $relations = []): mixed
     {
         $this->instance = $this->getQueryBuilder()->with($relations)->find($id);
 
@@ -182,7 +174,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function findBy($field, $value, array $relations = [])
+    public function findBy(string $field, string $value, array $relations = []): mixed
     {
         $this->instance = $this->getQueryBuilder()->with($relations)->where($field, $value)->first();
 
@@ -197,7 +189,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function findByMany(array $data, array $relations = [])
+    public function findByMany(array $data, array $relations = []): mixed
     {
         $model = $this->getQueryBuilder()->with($relations);
 
@@ -218,7 +210,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return object
      * @throws \Exception
      */
-    public function getWhereIn(array $ids, array $relations = [])
+    public function getWhereIn(array $ids, array $relations = []): object
     {
         $this->instance = $this->getQueryBuilder()->with($relations)->whereIn('id', $ids)->get();
 
@@ -232,7 +224,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return object model instance
      * @throws \Exception
      */
-    public function store(array $data)
+    public function store(array $data): object
     {
         $this->instance = $this->getNewInstance();
 
@@ -247,7 +239,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return object model instance
      * @throws \Exception
      */
-    public function update($id, array $data)
+    public function update(int $id, array $data): object
     {
         $this->instance = $this->find($id);
 
@@ -263,7 +255,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @param array $data
      * @return mixed
      */
-    protected function executeSave(array $data)
+    protected function executeSave(array $data): mixed
     {
         $data = $this->setBooleanFields($data);
 
@@ -280,7 +272,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return object model instance
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(int $id): object
     {
         $instance = $this->find($id);
 
@@ -293,7 +285,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @param array $data
      * @return array
      */
-    protected function setBooleanFields(array $data)
+    protected function setBooleanFields(array $data): array
     {
         foreach ($this->getModelBooleanFields() as $booleanField) {
             $data[$booleanField] = \Arr::get($data, $booleanField, 0);
@@ -307,7 +299,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      *
      * @return array
      */
-    protected function getModelBooleanFields()
+    protected function getModelBooleanFields(): array
     {
         return $this->instance->getBooleanFields();
     }
@@ -318,9 +310,9 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return string
      * @throws \Exception If model has not been set.
      */
-    public function getModelName()
+    public function getModelName(): string
     {
-        if (! $this->modelName) {
+        if ($this->modelName === '' || $this->modelName === '0') {
             throw new \Exception('Model has not been set in ' . get_called_class());
         }
 
@@ -333,7 +325,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception#
      */
-    public function getQueryBuilder()
+    public function getQueryBuilder(): mixed
     {
         return $this->getNewInstance()->newQuery();
     }
@@ -344,7 +336,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @return mixed
      * @throws \Exception
      */
-    public function getNewInstance()
+    public function getNewInstance(): mixed
     {
         $model = $this->getModelName();
 
@@ -357,7 +349,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @param string $orderBy
      * @return void
      */
-    protected function resolveOrder($orderBy)
+    protected function resolveOrder(string $orderBy): void
     {
         if (! \Input::get('sort_by')) {
             $this->parseOrder($orderBy);
@@ -372,7 +364,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * Resolve direction
      * @return void
      */
-    protected function resolveDirection()
+    protected function resolveDirection(): void
     {
         $direction = strtolower(\Input::get('direction', 'asc'));
 
@@ -387,7 +379,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * Resolve order by
      * @return void
      */
-    protected function resolveOrderBy($column)
+    protected function resolveOrderBy($column): void
     {
         $orderBy = \Input::get('sort_by');
 
@@ -402,7 +394,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @param string $orderBy
      * @return void
      */
-    protected function parseOrder($orderBy)
+    protected function parseOrder(string $orderBy): void
     {
         if (substr($orderBy, -3) === 'Asc') {
             $this->setOrderDirection('asc');
@@ -421,7 +413,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @param string $orderBy
      * @return void
      */
-    public function setOrderBy($orderBy)
+    public function setOrderBy(string $orderBy): void
     {
         $this->orderBy = $orderBy;
     }
@@ -431,7 +423,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      *
      * @return string
      */
-    public function getOrderBy()
+    public function getOrderBy(): string
     {
         return $this->orderBy;
     }
@@ -442,7 +434,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      * @param string $orderDirection
      * @return void
      */
-    public function setOrderDirection($orderDirection)
+    public function setOrderDirection(string $orderDirection): void
     {
         $this->orderDirection = $orderDirection;
     }
@@ -452,7 +444,7 @@ class BaseEloquentRepository implements BaseEloquentInterface
      *
      * @return string
      */
-    public function getOrderDirection()
+    public function getOrderDirection(): string
     {
         return $this->orderDirection;
     }
@@ -460,11 +452,10 @@ class BaseEloquentRepository implements BaseEloquentInterface
     /**
      * Get count of records
      *
-     * @param null
-     * @return integer
+     * @return int
      * @throws \Exception
      */
-    public function count()
+    public function count(): int
     {
         return $this->getNewInstance()->count();
     }

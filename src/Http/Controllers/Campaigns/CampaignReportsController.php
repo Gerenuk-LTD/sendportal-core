@@ -18,11 +18,9 @@ use Sendportal\Base\Repositories\Messages\MessageTenantRepositoryInterface;
 
 class CampaignReportsController extends Controller
 {
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaignRepo;
+    protected CampaignTenantRepositoryInterface $campaignRepo;
 
-    /** @var MessageTenantRepositoryInterface */
-    protected $messageRepo;
+    protected MessageTenantRepositoryInterface $messageRepo;
 
     public function __construct(
         CampaignTenantRepositoryInterface $campaignRepository,
@@ -35,10 +33,12 @@ class CampaignReportsController extends Controller
     /**
      * Show campaign report view.
      *
+     * @param  int  $id
+     * @param  Request  $request
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function index(int $id, Request $request)
+    public function index(int $id, Request $request): RedirectResponse|View
     {
         $campaign = $this->campaignRepo->find(Sendportal::currentWorkspaceId(), $id);
 
@@ -67,10 +67,11 @@ class CampaignReportsController extends Controller
     /**
      * Show campaign recipients.
      *
+     * @param  int  $id
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function recipients(int $id)
+    public function recipients(int $id): RedirectResponse|View
     {
         $campaign = $this->campaignRepo->find(Sendportal::currentWorkspaceId(), $id);
 
@@ -90,10 +91,11 @@ class CampaignReportsController extends Controller
     /**
      * Show campaign opens.
      *
+     * @param  int  $id
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function opens(int $id)
+    public function opens(int $id): RedirectResponse|View
     {
         $campaign = $this->campaignRepo->find(Sendportal::currentWorkspaceId(), $id);
         $averageTimeToOpen = $this->campaignRepo->getAverageTimeToOpen($campaign);
@@ -114,10 +116,11 @@ class CampaignReportsController extends Controller
     /**
      * Show campaign clicks.
      *
+     * @param  int  $id
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function clicks(int $id)
+    public function clicks(int $id): RedirectResponse|View
     {
         $campaign = $this->campaignRepo->find(Sendportal::currentWorkspaceId(), $id);
         $averageTimeToClick = $this->campaignRepo->getAverageTimeToClick($campaign);
@@ -138,10 +141,11 @@ class CampaignReportsController extends Controller
     /**
      * Show campaign bounces.
      *
+     * @param  int  $id
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function bounces(int $id)
+    public function bounces(int $id): RedirectResponse|View
     {
         $campaign = $this->campaignRepo->find(Sendportal::currentWorkspaceId(), $id);
 
@@ -161,10 +165,11 @@ class CampaignReportsController extends Controller
     /**
      * Show campaign unsubscribes.
      *
+     * @param  int  $id
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function unsubscribes(int $id)
+    public function unsubscribes(int $id): RedirectResponse|View
     {
         $campaign = $this->campaignRepo->find(Sendportal::currentWorkspaceId(), $id);
 

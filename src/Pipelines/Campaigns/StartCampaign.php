@@ -13,7 +13,7 @@ class StartCampaign
      * @param Campaign $campaign
      * @return Campaign
      */
-    public function handle(Campaign $campaign, $next)
+    public function handle(Campaign $campaign, $next): Campaign
     {
         $this->markCampaignAsSending($campaign);
 
@@ -23,8 +23,8 @@ class StartCampaign
     /**
      * Execute the database request
      *
-     * @param Campaign $campaign
-     * @return Campaign
+     * @param  Campaign  $campaign
+     * @return Campaign|null
      */
     protected function markCampaignAsSending(Campaign $campaign): ?Campaign
     {

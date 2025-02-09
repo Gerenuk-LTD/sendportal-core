@@ -15,20 +15,15 @@ use Sendportal\Base\Services\Content\MergeSubjectService;
 
 class DispatchMessage
 {
-    /** @var ResolveEmailService */
-    protected $resolveEmailService;
+    protected ResolveEmailService $resolveEmailService;
 
-    /** @var RelayMessage */
-    protected $relayMessage;
+    protected RelayMessage $relayMessage;
 
-    /** @var MergeContentService */
-    protected $mergeContentService;
+    protected MergeContentService $mergeContentService;
 
-    /** @var MergeSubjectService */
-    protected $mergeSubjectService;
+    protected MergeSubjectService $mergeSubjectService;
 
-    /** @var MarkAsSent */
-    protected $markAsSent;
+    protected MarkAsSent $markAsSent;
 
     public function __construct(
         MergeContentService $mergeContentService,

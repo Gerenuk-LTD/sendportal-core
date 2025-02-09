@@ -12,10 +12,8 @@ class CreateMessages
 {
     /**
      * Stores unique subscribers for this campaign
-     *
-     * @var array
      */
-    protected $sentItems = [];
+    protected array $sentItems = [];
 
     /**
      * CreateMessages handler
@@ -25,7 +23,7 @@ class CreateMessages
      * @return Campaign
      * @throws \Exception
      */
-    public function handle(Campaign $campaign, $next)
+    public function handle(Campaign $campaign, $next): Campaign
     {
         if ($campaign->send_to_all) {
             $this->handleAllSubscribers($campaign);
@@ -42,7 +40,7 @@ class CreateMessages
      * @param Campaign $campaign
      * @throws \Exception
      */
-    protected function handleAllSubscribers(Campaign $campaign)
+    protected function handleAllSubscribers(Campaign $campaign): void
     {
         Subscriber::where('workspace_id', $campaign->workspace_id)
             ->whereNull('unsubscribed_at')
@@ -56,7 +54,7 @@ class CreateMessages
      *
      * @param Campaign $campaign
      */
-    protected function handleTags(Campaign $campaign)
+    protected function handleTags(Campaign $campaign): void
     {
         foreach ($campaign->tags as $tag) {
             $this->handleTag($campaign, $tag);
@@ -86,7 +84,7 @@ class CreateMessages
      * @param Campaign $campaign
      * @param $subscribers
      */
-    protected function dispatchToSubscriber(Campaign $campaign, $subscribers)
+    protected function dispatchToSubscriber(Campaign $campaign, $subscribers): void
     {
         \Log::info('- Number of subscribers in this chunk: ' . count($subscribers));
 

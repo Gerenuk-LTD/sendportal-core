@@ -15,12 +15,8 @@ class SesMailAdapter extends BaseMailAdapter
 {
     use ThrottlesSending;
 
-    /** @var SesClient */
-    protected $client;
+    protected SesClient $client;
 
-    /**
-     * @throws BindingResolutionException
-     */
     public function send(string $fromEmail, string $fromName, string $toEmail, string $subject, MessageTrackingOptions $trackingOptions, string $content): string
     {
         // TODO(david): It isn't clear whether it is possible to set per-message tracking for SES.

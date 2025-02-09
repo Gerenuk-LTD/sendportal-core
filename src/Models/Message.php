@@ -55,17 +55,15 @@ class Message extends BaseModel
 
     // NOTE(david): we require this because of namespace issues when resolving factories from models
     // not in the default `App\Models` namespace.
-    protected static function newFactory()
+    protected static function newFactory(): MessageFactory
     {
         return MessageFactory::new();
     }
 
     protected $table = 'sendportal_messages';
 
-    /** @var array */
     protected $guarded = [];
 
-    /** @var array */
     public function casts(): array
     {
         return [
@@ -81,8 +79,7 @@ class Message extends BaseModel
     }
 
     // We can't use boolean fields on this model because we have multiple points to update from the controller.
-    /** @var array */
-    protected $booleanFields = [];
+    protected array $booleanFields = [];
 
     /**
      * The "booting" method of the model.

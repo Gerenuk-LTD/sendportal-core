@@ -20,25 +20,17 @@ use Sendportal\Base\Services\Campaigns\CampaignStatisticsService;
 
 class CampaignsController extends Controller
 {
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
-    /** @var TemplateTenantRepository */
-    protected $templates;
+    protected TemplateTenantRepository $templates;
 
-    /** @var TagTenantRepository */
-    protected $tags;
+    protected TagTenantRepository $tags;
 
-    /** @var EmailServiceTenantRepository */
-    protected $emailServices;
+    protected EmailServiceTenantRepository $emailServices;
 
-    /** @var SubscriberTenantRepositoryInterface */
-    protected $subscribers;
+    protected SubscriberTenantRepositoryInterface $subscribers;
 
-    /**
-     * @var CampaignStatisticsService
-     */
-    protected $campaignStatisticsService;
+    protected CampaignStatisticsService $campaignStatisticsService;
 
     public function __construct(
         CampaignTenantRepositoryInterface $campaigns,
@@ -156,10 +148,11 @@ class CampaignsController extends Controller
     }
 
     /**
+     * @param  int  $id
      * @return RedirectResponse|ViewContract
      * @throws Exception
      */
-    public function preview(int $id)
+    public function preview(int $id): RedirectResponse|ViewContract
     {
         $campaign = $this->campaigns->find(Sendportal::currentWorkspaceId(), $id);
         $subscriberCount = $this->subscribers->countActive(Sendportal::currentWorkspaceId());
@@ -174,10 +167,11 @@ class CampaignsController extends Controller
     }
 
     /**
+     * @param  int  $id
      * @return RedirectResponse|ViewContract
      * @throws Exception
      */
-    public function status(int $id)
+    public function status(int $id): RedirectResponse|ViewContract
     {
         $workspaceId = Sendportal::currentWorkspaceId();
         $campaign = $this->campaigns->find($workspaceId, $id, ['status']);

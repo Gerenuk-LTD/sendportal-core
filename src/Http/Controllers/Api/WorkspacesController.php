@@ -13,8 +13,7 @@ use Sendportal\Base\Repositories\WorkspacesRepository;
 
 class WorkspacesController extends Controller
 {
-    /** @var WorkspacesRepository */
-    private $workspaces;
+    private WorkspacesRepository $workspaces;
 
     public function __construct(WorkspacesRepository $workspaces)
     {

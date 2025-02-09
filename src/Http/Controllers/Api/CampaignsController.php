@@ -15,8 +15,7 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignsController extends Controller
 {
-    /** @var CampaignTenantRepositoryInterface */
-    private $campaigns;
+    private CampaignTenantRepositoryInterface $campaigns;
 
     public function __construct(CampaignTenantRepositoryInterface $campaigns)
     {

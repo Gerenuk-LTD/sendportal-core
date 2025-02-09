@@ -15,8 +15,7 @@ use Sendportal\Base\Services\Webhooks\EmailWebhookService;
 
 class HandleSesWebhook implements ShouldQueue
 {
-    /** @var EmailWebhookService */
-    private $emailWebhookService;
+    private EmailWebhookService $emailWebhookService;
 
     public function __construct(EmailWebhookService $emailWebhookService)
     {

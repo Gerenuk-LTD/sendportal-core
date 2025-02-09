@@ -18,8 +18,7 @@ use Sendportal\Base\Models\EmailServiceType;
 
 class MailAdapterFactory
 {
-    /** @var array */
-    public static $adapterMap = [
+    public static array $adapterMap = [
         EmailServiceType::SES => SesMailAdapter::class,
         EmailServiceType::SENDGRID => SendgridMailAdapter::class,
         EmailServiceType::MAILGUN => MailgunMailAdapter::class,
@@ -31,10 +30,8 @@ class MailAdapterFactory
 
     /**
      * Cache of resolved mail adapters.
-     *
-     * @var array
      */
-    private $adapters = [];
+    private array $adapters = [];
 
     /**
      * Get a mail adapter instance.

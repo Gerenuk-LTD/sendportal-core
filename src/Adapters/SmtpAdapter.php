@@ -15,17 +15,15 @@ use Symfony\Component\Mime\Email;
 
 class SmtpAdapter extends BaseMailAdapter
 {
-    /** @var Mailer */
-    protected $client;
+    protected Mailer $client;
 
-    /** @var EsmtpTransport */
-    protected $transport;
+    protected EsmtpTransport $transport;
 
     public function send(string $fromEmail, string $fromName, string $toEmail, string $subject, MessageTrackingOptions $trackingOptions, string $content): string
     {
         try {
             $result = $this->resolveClient()->send($this->resolveMessage($subject, $content, $fromEmail, $fromName, $toEmail));
-        } catch (TransportException $e) {
+        } catch (TransportException) {
             return $this->resolveMessageId(0);
         }
 

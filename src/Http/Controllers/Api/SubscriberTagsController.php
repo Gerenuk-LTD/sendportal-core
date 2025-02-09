@@ -17,11 +17,9 @@ use Sendportal\Base\Services\Subscribers\Tags\ApiSubscriberTagService;
 
 class SubscriberTagsController extends Controller
 {
-    /** @var SubscriberTenantRepositoryInterface */
-    private $subscribers;
+    private SubscriberTenantRepositoryInterface $subscribers;
 
-    /** @var ApiSubscriberTagService */
-    private $apiService;
+    private ApiSubscriberTagService $apiService;
 
     public function __construct(
         SubscriberTenantRepositoryInterface $subscribers,

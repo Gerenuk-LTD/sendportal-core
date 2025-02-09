@@ -16,8 +16,7 @@ class EmailServiceType extends BaseModel
     public const SMTP = 6;
     public const POSTAL = 7;
 
-    /** @var array */
-    protected static $types = [
+    protected static array $types = [
         self::SES => 'SES',
         self::SENDGRID => 'Sendgrid',
         self::MAILGUN => 'Mailgun',

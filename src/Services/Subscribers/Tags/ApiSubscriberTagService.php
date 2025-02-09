@@ -10,8 +10,7 @@ use Sendportal\Base\Repositories\Subscribers\SubscriberTenantRepositoryInterface
 
 class ApiSubscriberTagService
 {
-    /** @var SubscriberTenantRepositoryInterface */
-    private $subscribers;
+    private SubscriberTenantRepositoryInterface $subscribers;
 
     public function __construct(SubscriberTenantRepositoryInterface $subscribers)
     {

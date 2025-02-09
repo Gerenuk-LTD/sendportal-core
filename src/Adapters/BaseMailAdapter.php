@@ -6,8 +6,7 @@ use Sendportal\Base\Interfaces\MailAdapterInterface;
 
 abstract class BaseMailAdapter implements MailAdapterInterface
 {
-    /** @var array */
-    protected $config;
+    protected array $config;
 
     public function __construct(array $config = [])
     {

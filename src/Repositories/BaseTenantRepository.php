@@ -4,6 +4,7 @@ namespace Sendportal\Base\Repositories;
 
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use RuntimeException;
 use Sendportal\Base\Interfaces\BaseTenantInterface;
 
@@ -50,7 +51,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function all($workspaceId, $orderBy = 'id', array $relations = [], array $parameters = [])
+    public function all(int $workspaceId, string $orderBy = 'id', array $relations = [], array $parameters = []): mixed
     {
         $instance = $this->getQueryBuilder($workspaceId);
 
@@ -74,7 +75,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function paginate($workspaceId, $orderBy = 'name', array $relations = [], $paginate = 25, array $parameters = [])
+    public function paginate(int $workspaceId, string $orderBy = 'name', array $relations = [], int $paginate = 25, array $parameters = []): mixed
     {
         $instance = $this->getQueryBuilder($workspaceId);
 
@@ -104,7 +105,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function getBy($workspaceId, $parameters, array $relations = [])
+    public function getBy(int $workspaceId, array $parameters, array $relations = []): mixed
     {
         $instance = $this->getQueryBuilder($workspaceId)
             ->with($relations);
@@ -125,7 +126,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function pluck($workspaceId, $fieldName = 'name', $fieldId = 'id')
+    public function pluck(int $workspaceId, string $fieldName = 'name', string $fieldId = 'id'): mixed
     {
         return $this->getQueryBuilder($workspaceId)
             ->orderBy($fieldName)
@@ -144,7 +145,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function pluckBy($workspaceId, $field, $value, $listFieldName = 'name', $listFieldId = 'id')
+    public function pluckBy(int $workspaceId, string $field, string $value, string $listFieldName = 'name', string $listFieldId = 'id'): mixed
     {
         if (! is_array($value)) {
             $value = [$value];
@@ -166,7 +167,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function find($workspaceId, $id, array $relations = [])
+    public function find(int $workspaceId, int $id, array $relations = []): mixed
     {
         return $this->getQueryBuilder($workspaceId)->with($relations)->findOrFail($id);
     }
@@ -181,7 +182,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function findBy($workspaceId, $field, $value, array $relations = [])
+    public function findBy(int $workspaceId, string $field, string $value, array $relations = []): mixed
     {
         return $this->getQueryBuilder($workspaceId)
             ->with($relations)
@@ -198,7 +199,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function findByMany($workspaceId, array $data, array $relations = [])
+    public function findByMany(int $workspaceId, array $data, array $relations = []): mixed
     {
         $model = $this->getQueryBuilder($workspaceId)->with($relations);
 
@@ -218,7 +219,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function getWhereIn($workspaceId, array $ids, array $relations = [])
+    public function getWhereIn(int $workspaceId, array $ids, array $relations = []): mixed
     {
         return $this->getQueryBuilder($workspaceId)
             ->with($relations)
@@ -233,7 +234,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function store($workspaceId, array $data)
+    public function store(int $workspaceId, array $data): mixed
     {
         $this->checkTenantData($data);
 
@@ -251,7 +252,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function update($workspaceId, $id, array $data)
+    public function update(int $workspaceId, int $id, array $data): mixed
     {
         $this->checkTenantData($data);
 
@@ -268,7 +269,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @param array $data
      * @return mixed
      */
-    protected function executeSave($workspaceId, $instance, array $data)
+    protected function executeSave(int $workspaceId, mixed $instance, array $data): mixed
     {
         $data = $this->setBooleanFields($instance, $data);
 
@@ -287,7 +288,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function destroy($workspaceId, $id)
+    public function destroy(int $workspaceId, int $id): mixed
     {
         $instance = $this->find($workspaceId, $id);
 
@@ -330,7 +331,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
     /**
      * @inheritDoc
      */
-    public function getNewInstance()
+    public function getNewInstance(): Model
     {
         $model = $this->getModelName();
 
@@ -343,7 +344,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @param string $orderBy
      * @return void
      */
-    protected function parseOrder($orderBy): void
+    protected function parseOrder(string $orderBy): void
     {
         if (substr($orderBy, -3) === 'Asc') {
             $this->setOrderDirection('asc');
@@ -362,7 +363,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @param string $orderBy
      * @return void
      */
-    public function setOrderBy($orderBy)
+    public function setOrderBy(string $orderBy): void
     {
         $this->orderBy = $orderBy;
     }
@@ -372,7 +373,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      *
      * @return string
      */
-    public function getOrderBy()
+    public function getOrderBy(): string
     {
         return $this->orderBy;
     }
@@ -383,7 +384,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @param string $orderDirection
      * @return void
      */
-    public function setOrderDirection($orderDirection)
+    public function setOrderDirection(string $orderDirection): void
     {
         $this->orderDirection = $orderDirection;
     }
@@ -393,7 +394,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      *
      * @return string
      */
-    public function getOrderDirection()
+    public function getOrderDirection(): string
     {
         return $this->orderDirection;
     }
@@ -405,7 +406,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @return void
      * @throws Exception If Tenant value is found in data.
      */
-    protected function checkTenantData(array $data)
+    protected function checkTenantData(array $data): void
     {
         if (isset($data[$this->getTenantKey()])) {
             throw new Exception('Tenant value should not be provided in data.');
@@ -417,7 +418,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      *
      * @return string
      */
-    protected function getTenantKey()
+    protected function getTenantKey(): string
     {
         return $this->tenantKey;
     }
@@ -430,7 +431,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @param array $data
      * @return array
      */
-    protected function setBooleanFields($instance, array $data)
+    protected function setBooleanFields(mixed $instance, array $data): array
     {
         foreach ($this->getModelBooleanFields($instance) as $booleanField) {
             $data[$booleanField] = Arr::get($data, $booleanField, 0);
@@ -445,7 +446,7 @@ abstract class BaseTenantRepository implements BaseTenantInterface
      * @param mixed $instance
      * @return array
      */
-    protected function getModelBooleanFields($instance)
+    protected function getModelBooleanFields(mixed $instance): array
     {
         return $instance->getBooleanFields();
     }

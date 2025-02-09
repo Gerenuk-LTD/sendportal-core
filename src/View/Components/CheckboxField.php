@@ -4,21 +4,19 @@ declare(strict_types=1);
 
 namespace Sendportal\Base\View\Components;
 
+use Closure;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class CheckboxField extends Component
 {
-    /** @var string  */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $label;
+    public string $label;
 
-    /** @var int|mixed */
-    public $value;
+    public mixed $value;
 
-    /** @var bool */
-    public $checked;
+    public bool $checked;
 
     /**
      * Create the component instance.
@@ -28,7 +26,7 @@ class CheckboxField extends Component
      * @param int $value
      * @param bool $checked
      */
-    public function __construct(string $name, string $label = '', $value = 1, bool $checked = false)
+    public function __construct(string $name, string $label = '', int $value = 1, bool $checked = false)
     {
         $this->name = $name;
         $this->label = $label;
@@ -39,9 +37,9 @@ class CheckboxField extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|\Closure|string
+     * @return Closure|string|View
      */
-    public function render()
+    public function render(): Closure|string|View
     {
         return view('sendportal::components.checkbox-field');
     }

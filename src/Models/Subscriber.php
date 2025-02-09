@@ -38,7 +38,7 @@ class Subscriber extends BaseModel
 
     // NOTE(david): we require this because of namespace issues when resolving factories from models
     // not in the default `App\Models` namespace.
-    protected static function newFactory()
+    protected static function newFactory(): SubscriberFactory
     {
         return SubscriberFactory::new();
     }
@@ -81,7 +81,7 @@ class Subscriber extends BaseModel
         return "{$this->first_name} {$this->last_name}";
     }
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 

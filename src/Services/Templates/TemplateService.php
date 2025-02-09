@@ -14,8 +14,7 @@ class TemplateService
 {
     use NormalizeTags;
 
-    /** @var TemplateTenantRepository */
-    private $templates;
+    private TemplateTenantRepository $templates;
 
     public function __construct(TemplateTenantRepository $templates)
     {

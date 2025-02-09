@@ -182,7 +182,7 @@ class EmailWebhookService
      * @param Message $message
      * @return mixed
      */
-    protected function resolveAutomationStepFromMessage(Message $message)
+    protected function resolveAutomationStepFromMessage(Message $message): mixed
     {
         if (Helper::isPro() && $message->source_type !== AutomationSchedule::class) {
             throw new RuntimeException('Unable to resolve source for message id=' . $message->id);

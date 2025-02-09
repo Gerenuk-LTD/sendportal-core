@@ -29,7 +29,7 @@ class Tag extends BaseModel
 
     // NOTE(david): we require this because of namespace issues when resolving factories from models
     // not in the default `App\Models` namespace.
-    protected static function newFactory()
+    protected static function newFactory(): TagFactory
     {
         return TagFactory::new();
     }

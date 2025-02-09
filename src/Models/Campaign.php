@@ -69,25 +69,21 @@ class Campaign extends BaseModel
 
     // NOTE(david): we require this because of namespace issues when resolving factories from models
     // not in the default `App\Models` namespace.
-    protected static function newFactory()
+    protected static function newFactory(): CampaignFactory
     {
         return CampaignFactory::new();
     }
 
-    /** @var string */
     protected $table = 'sendportal_campaigns';
 
-    /** @var array */
     protected $guarded = [];
 
     /**
      * We can't use boolean fields on this model because we have multiple points to update from the controller.
-     *
-     * @var array
      */
-    protected $booleanFields = [];
+    protected array $booleanFields = [];
 
-    /** @var array */
+    /** @return array */
     protected function casts(): array
     {
         return [
@@ -213,7 +209,7 @@ class Campaign extends BaseModel
      * @return float|int
      * @todo this needs to be refactored, because its running a query per row when list the campaigns
      */
-    public function getOpenRatioAttribute()
+    public function getOpenRatioAttribute(): float|int
     {
         if ($openCount = $this->opens->count()) {
             return $openCount / $this->sent_count;
@@ -228,7 +224,7 @@ class Campaign extends BaseModel
      * @return float|int
      * @todo this needs to be refactored, because its running a query per row when list the campaigns
      */
-    public function getClickRatioAttribute()
+    public function getClickRatioAttribute(): float|int
     {
         if ($clickCount = $this->clicks->count()) {
             return $clickCount / $this->sent_count;
@@ -243,7 +239,7 @@ class Campaign extends BaseModel
      * @return float|int
      * @todo this needs to be refactored, because its running a query per row when list the campaigns
      */
-    public function getBounceRatioAttribute()
+    public function getBounceRatioAttribute(): float|int
     {
         if ($bounceCount = $this->messages->whereNotNull('bounced_at')->count()) {
             return $bounceCount / $this->sent_count;
@@ -349,7 +345,7 @@ class Campaign extends BaseModel
         return (string)$count;
     }
 
-    public function getActionRatio(int $actionCount, int $sentCount)
+    public function getActionRatio(int $actionCount, int $sentCount): float|int
     {
         if ($actionCount !== 0) {
             return $actionCount / $sentCount;

@@ -10,8 +10,7 @@ use Sendportal\Pro\Repositories\AutomationScheduleRepository;
 
 class ResolveEmailService
 {
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaignTenantRepository;
+    protected CampaignTenantRepositoryInterface $campaignTenantRepository;
 
     public function __construct(CampaignTenantRepositoryInterface $campaignTenantRepository)
     {

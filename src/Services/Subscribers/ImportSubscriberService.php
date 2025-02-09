@@ -9,8 +9,7 @@ use Sendportal\Base\Repositories\Subscribers\SubscriberTenantRepositoryInterface
 
 class ImportSubscriberService
 {
-    /** @var SubscriberTenantRepositoryInterface */
-    protected $subscribers;
+    protected SubscriberTenantRepositoryInterface $subscribers;
 
     public function __construct(SubscriberTenantRepositoryInterface $subscribers)
     {

@@ -13,7 +13,7 @@ class Helper
      * @param string $timezone
      * @return mixed
      */
-    public function displayDate($date, string $timezone = null)
+    public function displayDate(mixed $date, string $timezone = null): mixed
     {
         if (! $date) {
             return null;

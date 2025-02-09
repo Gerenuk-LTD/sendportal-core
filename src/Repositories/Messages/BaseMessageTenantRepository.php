@@ -181,7 +181,7 @@ abstract class BaseMessageTenantRepository extends BaseTenantRepository implemen
      * Note that when we use this filter, we only expect messages that are *at* that status. For example, if
      * a message has been "clicked", then it will not also appear in the "sent" or "delivered" statuses.
      */
-    protected function applyStatusFilter(Builder $instance, array $filters = [])
+    protected function applyStatusFilter(Builder $instance, array $filters = []): void
     {
         $status = Arr::get($filters, 'status', 'all');
 

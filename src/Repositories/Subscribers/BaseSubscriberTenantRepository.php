@@ -19,7 +19,7 @@ abstract class BaseSubscriberTenantRepository extends BaseTenantRepository imple
     /**
      * {@inheritDoc}
      */
-    public function store($workspaceId, array $data)
+    public function store(int $workspaceId, array $data): mixed
     {
         $this->checkTenantData($data);
 
@@ -45,7 +45,7 @@ abstract class BaseSubscriberTenantRepository extends BaseTenantRepository imple
      *
      * @return mixed
      */
-    public function syncTags(Subscriber $subscriber, array $tags = [])
+    public function syncTags(Subscriber $subscriber, array $tags = []): mixed
     {
         return $subscriber->tags()->sync($tags);
     }
@@ -53,7 +53,7 @@ abstract class BaseSubscriberTenantRepository extends BaseTenantRepository imple
     /**
      * {@inheritDoc}
      */
-    public function update($workspaceId, $id, array $data)
+    public function update(int $workspaceId, int $id, array $data): mixed
     {
         $this->checkTenantData($data);
 
@@ -78,7 +78,7 @@ abstract class BaseSubscriberTenantRepository extends BaseTenantRepository imple
      * @return mixed
      * @throws Exception
      */
-    public function countActive($workspaceId): int
+    public function countActive(int $workspaceId): int
     {
         return $this->getQueryBuilder($workspaceId)
             ->whereNull('unsubscribed_at')

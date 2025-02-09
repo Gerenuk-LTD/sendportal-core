@@ -29,7 +29,7 @@ class SendportalAppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Campaign repository.
         $this->app->bind(CampaignTenantRepositoryInterface::class, function (Application $app) {
@@ -70,7 +70,7 @@ class SendportalAppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
     }
 }

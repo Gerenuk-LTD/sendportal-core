@@ -17,23 +17,17 @@ use Sendportal\Base\Repositories\MessageUrlRepository;
 
 class CampaignReportPresenter
 {
-    /** @var Campaign */
-    private $campaign;
+    private Campaign $campaign;
 
-    /** @var int */
-    private $currentWorkspaceId;
+    private int $currentWorkspaceId;
 
-    /** @var MessageTenantRepositoryInterface */
-    private $messageRepo;
+    private MessageTenantRepositoryInterface $messageRepo;
 
-    /** @var MessageUrlRepository */
-    private $messageUrlRepo;
+    private MessageUrlRepository $messageUrlRepo;
 
-    /** @var CampaignTenantRepositoryInterface */
-    private $campaignRepo;
+    private CampaignTenantRepositoryInterface $campaignRepo;
 
-    /** @var int */
-    private $interval;
+    private int $interval;
 
     private const ONE_DAY_IN_SECONDS = 86400;
     private const THIRTY_DAYS_IN_SECONDS = self::ONE_DAY_IN_SECONDS * 30;

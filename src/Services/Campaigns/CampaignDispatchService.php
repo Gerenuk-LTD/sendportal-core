@@ -16,7 +16,7 @@ class CampaignDispatchService
      * @param Campaign $campaign
      * @return void
      */
-    public function handle(Campaign $campaign)
+    public function handle(Campaign $campaign): void
     {
         // check if the campaign still exists
         if (!($campaign = $this->findCampaign($campaign->id)) instanceof \Sendportal\Base\Models\Campaign) {

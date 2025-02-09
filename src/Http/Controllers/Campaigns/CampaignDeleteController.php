@@ -14,8 +14,7 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignDeleteController extends Controller
 {
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
     public function __construct(CampaignTenantRepositoryInterface $campaigns)
     {
@@ -25,10 +24,11 @@ class CampaignDeleteController extends Controller
     /**
      * Show a confirmation view prior to deletion.
      *
+     * @param  int  $id
      * @return RedirectResponse|View
      * @throws Exception
      */
-    public function confirm(int $id)
+    public function confirm(int $id): RedirectResponse|View
     {
         $campaign = $this->campaigns->find(Sendportal::currentWorkspaceId(), $id);
 

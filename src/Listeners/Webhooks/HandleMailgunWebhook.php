@@ -18,14 +18,11 @@ use Sendportal\Base\Services\Webhooks\Mailgun\WebhookVerifier;
 
 class HandleMailgunWebhook implements ShouldQueue
 {
-    /** @var string */
-    public $queue = 'sendportal-webhook-process';
+    public string $queue = 'sendportal-webhook-process';
 
-    /** @var EmailWebhookService */
-    private $emailWebhookService;
+    private EmailWebhookService $emailWebhookService;
 
-    /** @var WebhookVerifier */
-    private $verifier;
+    private WebhookVerifier $verifier;
 
     public function __construct(
         EmailWebhookService $emailWebhookService,

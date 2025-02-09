@@ -12,8 +12,7 @@ use Sendportal\Base\Services\Content\MergeContentService;
 
 class WebviewController extends Controller
 {
-    /** @var MergeContentService */
-    private $merger;
+    private MergeContentService $merger;
 
     public function __construct(MergeContentService $merger)
     {

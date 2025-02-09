@@ -10,10 +10,7 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignStatisticsService
 {
-    /**
-     * @var CampaignTenantRepositoryInterface
-     */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
     public function __construct(CampaignTenantRepositoryInterface $campaigns)
     {

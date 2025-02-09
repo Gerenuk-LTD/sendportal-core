@@ -2,6 +2,7 @@
 
 namespace Sendportal\Base\Http\Controllers\Api;
 
+use Illuminate\Http\Response;
 use Sendportal\Base\Facades\Sendportal;
 use Sendportal\Base\Http\Controllers\Controller;
 use Sendportal\Base\Http\Requests\Api\CampaignDispatchRequest;
@@ -12,15 +13,9 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignDispatchController extends Controller
 {
-    /**
-     * @var CampaignTenantRepositoryInterface
-     */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
-    /**
-     * @var QuotaServiceInterface
-     */
-    protected $quotaService;
+    protected QuotaServiceInterface $quotaService;
 
     public function __construct(
         CampaignTenantRepositoryInterface $campaigns,
@@ -33,7 +28,7 @@ class CampaignDispatchController extends Controller
     /**
      * @throws \Exception
      */
-    public function send(CampaignDispatchRequest $request, $campaignId)
+    public function send(CampaignDispatchRequest $request, $campaignId): Response|CampaignResource
     {
         $campaign = $request->getCampaign(['email_service', 'messages']);
         $workspaceId = Sendportal::currentWorkspaceId();

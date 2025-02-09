@@ -23,8 +23,7 @@ use Sendportal\Base\Services\Subscribers\ImportSubscriberService;
 
 class SubscribersImportController extends Controller
 {
-    /** @var ImportSubscriberService */
-    protected $subscriberService;
+    protected ImportSubscriberService $subscriberService;
 
     public function __construct(ImportSubscriberService $subscriberService)
     {

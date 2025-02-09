@@ -6,11 +6,9 @@ namespace Sendportal\Base\Events\Webhooks;
 
 class SesWebhookReceived
 {
-    /** @var array */
-    public $payload;
+    public array $payload;
 
-    /** @var string */
-    public $payloadType;
+    public string $payloadType;
 
     public function __construct(array $payload, string $payloadType)
     {

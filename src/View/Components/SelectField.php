@@ -4,34 +4,32 @@ declare(strict_types=1);
 
 namespace Sendportal\Base\View\Components;
 
+use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class SelectField extends Component
 {
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $label;
+    public string $label;
 
-    /** @var array|Collection  */
-    public $options;
+    public array|Collection $options;
 
-    public $value;
+    public mixed $value;
 
-    /** @var bool */
-    public $multiple;
+    public bool $multiple;
 
     /**
      * Create the component instance.
      *
-     * @param string $name
-     * @param string $label
-     * @param array $options
-     * @param bool $multiple
+     * @param  string  $name
+     * @param  string  $label
+     * @param  array  $options
+     * @param  bool  $multiple
      */
-    public function __construct(string $name, string $label = '', $options = [], $value = null, bool $multiple = false)
+    public function __construct(string $name, string $label = '', array $options = [], $value = null, bool $multiple = false)
     {
         $this->name = $name;
         $this->label = $label;
@@ -60,9 +58,9 @@ class SelectField extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|\Closure|string
+     * @return View|Closure|string
      */
-    public function render()
+    public function render(): Closure|string|View
     {
         return view('sendportal::components.select-field');
     }

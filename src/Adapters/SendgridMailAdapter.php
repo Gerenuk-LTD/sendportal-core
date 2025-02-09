@@ -16,8 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SendgridMailAdapter extends BaseMailAdapter
 {
-    /** @var SendGrid */
-    protected $client;
+    protected SendGrid $client;
 
     /**
      * @throws TypeException

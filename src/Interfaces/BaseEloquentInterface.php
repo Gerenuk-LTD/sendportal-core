@@ -12,18 +12,18 @@ interface BaseEloquentInterface
      * @param array $parameters
      * @return mixed
      */
-    public function all($orderBy = 'id', array $relations = [], array $parameters = []);
+    public function all(string $orderBy = 'id', array $relations = [], array $parameters = []): mixed;
 
     /**
      * Paginate items
      *
      * @param string $orderBy
      * @param array $relations
-     * @param integer $paginate
+     * @param int $paginate
      * @param array $parameters
      * @return mixed
      */
-    public function paginate($orderBy = 'name', array $relations = [], $paginate = 50, array $parameters = []);
+    public function paginate(string $orderBy = 'name', array $relations = [], int $paginate = 50, array $parameters = []): mixed;
 
     /**
      * Get all items by a field
@@ -32,7 +32,7 @@ interface BaseEloquentInterface
      * @param array $relations
      * @return mixed
      */
-    public function getBy(array $parameters, array $relations = []);
+    public function getBy(array $parameters, array $relations = []): mixed;
 
     /**
      * List all items
@@ -41,7 +41,7 @@ interface BaseEloquentInterface
      * @param string $fieldId
      * @return mixed
      */
-    public function pluck($fieldName = 'name', $fieldId = 'id');
+    public function pluck(string $fieldName = 'name', string $fieldId = 'id'): mixed;
 
     /**
      * List records limited by a certain field
@@ -52,7 +52,7 @@ interface BaseEloquentInterface
      * @param string $listFieldId
      * @return mixed
      */
-    public function pluckBy($field, $value, $listFieldName = 'name', $listFieldId = 'id');
+    public function pluckBy(string $field, string|array $value, string $listFieldName = 'name', string $listFieldId = 'id'): mixed;
 
     /**
      * Find a single item
@@ -61,7 +61,7 @@ interface BaseEloquentInterface
      * @param array $relations
      * @return mixed
      */
-    public function find($id, array $relations = []);
+    public function find(int $id, array $relations = []): mixed;
 
     /**
      * Find a single item by a field
@@ -71,7 +71,7 @@ interface BaseEloquentInterface
      * @param array $relations
      * @return mixed
      */
-    public function findBy($field, $value, array $relations = []);
+    public function findBy(string $field, string $value, array $relations = []): mixed;
 
     /**
      * Find a single record by multiple fields
@@ -80,7 +80,7 @@ interface BaseEloquentInterface
      * @param array $relations
      * @return mixed
      */
-    public function findByMany(array $data, array $relations = []);
+    public function findByMany(array $data, array $relations = []): mixed;
 
     /**
      * Find multiple models
@@ -89,7 +89,7 @@ interface BaseEloquentInterface
      * @param array $relations
      * @return object
      */
-    public function getWhereIn(array $ids, array $relations = []);
+    public function getWhereIn(array $ids, array $relations = []): mixed;
 
     /**
      * Store a newly created item
@@ -97,7 +97,7 @@ interface BaseEloquentInterface
      * @param array $data
      * @return mixed
      */
-    public function store(array $data);
+    public function store(array $data): mixed;
 
     /**
      * Update an existing item
@@ -106,21 +106,20 @@ interface BaseEloquentInterface
      * @param array $data
      * @return mixed
      */
-    public function update($id, array $data);
+    public function update(int $id, array $data): mixed;
 
     /**
      * Permanently remove an item from storage
      *
-     * @param integer $id
+     * @param int $id
      * @return mixed
      */
-    public function destroy($id);
+    public function destroy(int $id): mixed;
 
     /**
      * Get count of records
      *
-     * @param null
-     * @return integer
+     * @return int
      */
-    public function count();
+    public function count(): int;
 }

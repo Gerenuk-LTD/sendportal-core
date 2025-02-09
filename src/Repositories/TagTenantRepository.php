@@ -14,7 +14,7 @@ class TagTenantRepository extends BaseTenantRepository
     /**
      * {@inheritDoc}
      */
-    public function update($workspaceId, $id, array $data)
+    public function update(int $workspaceId, int $id, array $data): mixed
     {
         $instance = $this->find($workspaceId, $id);
 
@@ -30,7 +30,7 @@ class TagTenantRepository extends BaseTenantRepository
      * @param array $subscribers
      * @return array
      */
-    public function syncSubscribers(Tag $tag, array $subscribers = [])
+    public function syncSubscribers(Tag $tag, array $subscribers = []): array
     {
         return $tag->subscribers()->sync($subscribers);
     }

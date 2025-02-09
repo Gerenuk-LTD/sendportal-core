@@ -14,7 +14,7 @@ class ResolverProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('sendportal.resolver', function () {
             return new ResolverService();
@@ -26,7 +26,7 @@ class ResolverProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }

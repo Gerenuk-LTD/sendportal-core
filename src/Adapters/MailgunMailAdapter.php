@@ -11,10 +11,9 @@ use Sendportal\Base\Services\Messages\MessageTrackingOptions;
 
 class MailgunMailAdapter extends BaseMailAdapter
 {
-    /** @var Mailgun */
-    protected $client;
+    protected Mailgun $client;
 
-    protected $urls = [
+    protected array $urls = [
         'US' => 'https://api.mailgun.net/v3',
         'EU' => 'https://api.eu.mailgun.net/v3'
     ];

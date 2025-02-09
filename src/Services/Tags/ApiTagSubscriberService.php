@@ -11,8 +11,7 @@ use Sendportal\Base\Repositories\TagTenantRepository;
 
 class ApiTagSubscriberService
 {
-    /** @var TagTenantRepository */
-    private $tags;
+    private TagTenantRepository $tags;
 
     public function __construct(TagTenantRepository $tags)
     {

@@ -4,29 +4,29 @@ declare(strict_types=1);
 
 namespace Sendportal\Base\View\Components;
 
+use Closure;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class TextField extends Component
 {
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $label;
+    public string $label;
 
-    /** @var string */
-    public $type;
+    public string $type;
 
-    public $value;
+    public mixed $value;
 
     /**
      * Create the component instance.
      *
-     * @param string $name
-     * @param string $label
-     * @param string $type
+     * @param  string  $name
+     * @param  string  $label
+     * @param  string  $type
+     * @param  mixed  $value
      */
-    public function __construct(string $name, string $label = '', string $type = 'text', $value = null)
+    public function __construct(string $name, string $label = '', string $type = 'text', mixed $value = null)
     {
         $this->name = $name;
         $this->label = $label;
@@ -37,9 +37,9 @@ class TextField extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|\Closure|string
+     * @return View|Closure|string
      */
-    public function render()
+    public function render(): Closure|string|View
     {
         return view('sendportal::components.text-field');
     }

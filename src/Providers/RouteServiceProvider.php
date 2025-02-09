@@ -9,7 +9,7 @@ use Sendportal\Base\Routes\WebRoutes;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         Route::mixin(new ApiRoutes());
         Route::mixin(new WebRoutes());

@@ -19,11 +19,9 @@ class TemplatesController extends Controller
 {
     use NormalizeTags;
 
-    /** @var TemplateTenantRepository */
-    private $templates;
+    private TemplateTenantRepository $templates;
 
-    /** @var TemplateService */
-    private $service;
+    private TemplateService $service;
 
     public function __construct(TemplateTenantRepository $templates, TemplateService $service)
     {

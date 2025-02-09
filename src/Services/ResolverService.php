@@ -8,8 +8,7 @@ use Illuminate\Support\Arr;
 
 class ResolverService
 {
-    /** @var array */
-    private $resolvers = [];
+    private array $resolvers = [];
 
     public function setHeaderHtmlContentResolver(callable $callable): void
     {

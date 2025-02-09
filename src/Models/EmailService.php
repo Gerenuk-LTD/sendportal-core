@@ -33,22 +33,19 @@ class EmailService extends BaseModel
 
     // NOTE(david): we require this because of namespace issues when resolving factories from models
     // not in the default `App\Models` namespace.
-    protected static function newFactory()
+    protected static function newFactory(): EmailServiceFactory
     {
         return EmailServiceFactory::new();
     }
 
-    /** @var string */
     protected $table = 'sendportal_email_services';
 
-    /** @var array */
     protected $fillable = [
         'name',
         'type_id',
         'settings',
     ];
 
-    /** @var array */
     protected function casts(): array
     {
         return [

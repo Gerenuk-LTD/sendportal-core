@@ -16,11 +16,9 @@ class MergeContentService
 {
     use NormalizeTags;
 
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaignRepo;
+    protected CampaignTenantRepositoryInterface $campaignRepo;
 
-    /** @var CssToInlineStyles */
-    protected $cssProcessor;
+    protected CssToInlineStyles $cssProcessor;
 
     public function __construct(
         CampaignTenantRepositoryInterface $campaignRepo,

@@ -15,8 +15,7 @@ class SubscriberAddedEvent
     use InteractsWithSockets;
     use SerializesModels;
 
-    /** @var Subscriber */
-    public $subscriber;
+    public Subscriber $subscriber;
 
     public function __construct(Subscriber $subscriber)
     {

@@ -6,7 +6,7 @@ use Sendportal\Base\Models\MessageUrl;
 
 class MessageUrlRepository extends BaseEloquentRepository
 {
-    protected $modelName = MessageUrl::class;
+    protected string $modelName = MessageUrl::class;
 
     /**
      * Get many records by a field and value
@@ -16,7 +16,7 @@ class MessageUrlRepository extends BaseEloquentRepository
      * @return mixed
      * @throws \Exception
      */
-    public function getBy(array $parameters, array $relations = [])
+    public function getBy(array $parameters, array $relations = []): mixed
     {
         $instance = $this->getQueryBuilder()
             ->with($relations);

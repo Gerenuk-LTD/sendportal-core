@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 class Helper extends Facade
 {
-    /**
-     * @return string
-     */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'sendportal.helper';
     }

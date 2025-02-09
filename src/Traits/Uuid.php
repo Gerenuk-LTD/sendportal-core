@@ -4,7 +4,7 @@ namespace Sendportal\Base\Traits;
 
 trait Uuid
 {
-    protected static function boot()
+    protected static function boot(): voic
     {
         parent::boot();
 

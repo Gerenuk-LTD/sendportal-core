@@ -14,8 +14,7 @@ use Sendportal\Base\Repositories\Messages\MessageTenantRepositoryInterface;
 
 class SubscriptionsController extends Controller
 {
-    /** @var MessageTenantRepositoryInterface */
-    protected $messages;
+    protected MessageTenantRepositoryInterface $messages;
 
     public function __construct(MessageTenantRepositoryInterface $messages)
     {

@@ -13,7 +13,7 @@ class SubscriberTagDestroyRequest extends FormRequest
     {
         return [
             'tags' => ['array', 'required'],
-            'tags.*' => ['integer', new CanAccessTag($this->user())]
+            'tags.*' => ['integer', new CanAccessTag()]
         ];
     }
 }

@@ -19,7 +19,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function all($workspaceId, $orderBy = 'id', array $relations = [], array $parameters = []);
+    public function all(int $workspaceId, string $orderBy = 'id', array $relations = [], array $parameters = []): mixed;
 
     /**
      * Return paginated items
@@ -32,7 +32,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function paginate($workspaceId, $orderBy = 'name', array $relations = [], $paginate = 25, array $parameters = []);
+    public function paginate(int $workspaceId, string $orderBy = 'name', array $relations = [], int $paginate = 25, array $parameters = []): mixed;
 
     /**
      * Get many records by a field and value
@@ -43,7 +43,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function getBy($workspaceId, array $parameters, array $relations = []);
+    public function getBy(int $workspaceId, array $parameters, array $relations = []): mixed;
 
     /**
      * List all records
@@ -54,7 +54,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function pluck($workspaceId, $fieldName = 'name', $fieldId = 'id');
+    public function pluck(int $workspaceId, string $fieldName = 'name', string $fieldId = 'id'): mixed;
 
     /**
      * List all records matching a field's value
@@ -67,7 +67,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function pluckBy($workspaceId, $field, $value, $listFieldName = 'name', $listFieldId = 'id');
+    public function pluckBy(int $workspaceId, string $field, string $value, string $listFieldName = 'name', string $listFieldId = 'id'): mixed;
 
     /**
      * Find a single record
@@ -78,7 +78,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function find($workspaceId, $id, array $relations = []);
+    public function find(int $workspaceId, int $id, array $relations = []): mixed;
 
     /**
      * Find a single record by a field and value
@@ -90,7 +90,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function findBy($workspaceId, $field, $value, array $relations = []);
+    public function findBy(int $workspaceId, string $field, string $value, array $relations = []): mixed;
 
     /**
      * Find a single record by multiple fields
@@ -101,7 +101,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function findByMany($workspaceId, array $data, array $relations = []);
+    public function findByMany(int $workspaceId, array $data, array $relations = []): mixed;
 
     /**
      * Find multiple models
@@ -112,7 +112,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function getWhereIn($workspaceId, array $ids, array $relations = []);
+    public function getWhereIn(int $workspaceId, array $ids, array $relations = []): mixed;
 
     /**
      * Create a new record
@@ -122,7 +122,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function store($workspaceId, array $data);
+    public function store(int $workspaceId, array $data): mixed;
 
     /**
      * Update the model instance
@@ -133,7 +133,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function update($workspaceId, $id, array $data);
+    public function update(int $workspaceId, int $id, array $data): mixed;
 
     /**
      * Delete a record
@@ -143,7 +143,7 @@ interface BaseTenantInterface
      * @return mixed
      * @throws Exception
      */
-    public function destroy($workspaceId, $id);
+    public function destroy(int $workspaceId, int $id): mixed;
 
     /**
      * Count of all records
@@ -171,7 +171,7 @@ interface BaseTenantInterface
      *
      * @return Model
      */
-    public function getNewInstance();
+    public function getNewInstance(): Model;
 
     /**
      * Set the order by field
@@ -179,14 +179,14 @@ interface BaseTenantInterface
      * @param string $orderBy
      * @return void
      */
-    public function setOrderBy($orderBy);
+    public function setOrderBy(string $orderBy): void;
 
     /**
      * Get the order by field
      *
      * @return string
      */
-    public function getOrderBy();
+    public function getOrderBy(): string;
 
     /**
      * Set the order direction
@@ -194,12 +194,12 @@ interface BaseTenantInterface
      * @param string $orderDirection
      * @return void
      */
-    public function setOrderDirection($orderDirection);
+    public function setOrderDirection(string $orderDirection): void;
 
     /**
      * Get the order direction
      *
      * @return string
      */
-    public function getOrderDirection();
+    public function getOrderDirection(): string;
 }

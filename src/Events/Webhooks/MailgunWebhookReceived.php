@@ -12,8 +12,7 @@ class MailgunWebhookReceived
     use InteractsWithSockets;
     use SerializesModels;
 
-    /** @var array */
-    public $payload;
+    public array $payload;
 
     public function __construct(array $payload)
     {

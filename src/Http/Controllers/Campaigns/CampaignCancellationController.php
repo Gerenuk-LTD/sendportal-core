@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Sendportal\Base\Http\Controllers\Campaigns;
 
 use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Sendportal\Base\Facades\Sendportal;
 use Sendportal\Base\Http\Controllers\Controller;
@@ -14,8 +16,7 @@ use Sendportal\Base\Repositories\Campaigns\CampaignTenantRepositoryInterface;
 
 class CampaignCancellationController extends Controller
 {
-    /** @var CampaignTenantRepositoryInterface $campaignRepository */
-    private $campaignRepository;
+    private CampaignTenantRepositoryInterface $campaignRepository;
 
     public function __construct(CampaignTenantRepositoryInterface $campaignRepository)
     {
@@ -25,7 +26,7 @@ class CampaignCancellationController extends Controller
     /**
      * @throws Exception
      */
-    public function confirm(int $campaignId)
+    public function confirm(int $campaignId): View
     {
         $campaign = $this->campaignRepository->find(Sendportal::currentWorkspaceId(), $campaignId, ['status']);
 
@@ -37,7 +38,7 @@ class CampaignCancellationController extends Controller
     /**
      * @throws Exception
      */
-    public function cancel(int $campaignId)
+    public function cancel(int $campaignId): RedirectResponse
     {
         /** @var Campaign $campaign */
         $campaign = $this->campaignRepository->find(Sendportal::currentWorkspaceId(), $campaignId, ['status']);

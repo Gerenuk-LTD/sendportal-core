@@ -17,11 +17,9 @@ use Sendportal\Base\Services\Templates\TemplateService;
 
 class TemplatesController extends Controller
 {
-    /** @var TemplateTenantRepository */
-    private $templates;
+    private TemplateTenantRepository $templates;
 
-    /** @var TemplateService */
-    private $service;
+    private TemplateService $service;
 
     public function __construct(TemplateTenantRepository $templates, TemplateService $service)
     {

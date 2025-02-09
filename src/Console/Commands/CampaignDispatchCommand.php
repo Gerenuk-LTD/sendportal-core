@@ -14,17 +14,13 @@ use Sendportal\Base\Services\Campaigns\CampaignDispatchService;
 
 class CampaignDispatchCommand extends Command
 {
-    /** @var string */
     protected $signature = 'sp:campaigns:dispatch';
 
-    /** @var string */
     protected $description = 'Dispatch all campaigns waiting in the queue';
 
-    /** @var CampaignTenantRepositoryInterface */
-    protected $campaignRepo;
+    protected CampaignTenantRepositoryInterface $campaignRepo;
 
-    /** @var CampaignDispatchService */
-    protected $campaignService;
+    protected CampaignDispatchService $campaignService;
 
     public function handle(
         CampaignTenantRepositoryInterface $campaignRepo,

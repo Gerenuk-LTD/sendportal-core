@@ -11,6 +11,7 @@ use Box\Spout\Writer\Exception\WriterNotOpenedException;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Mailjet\Request;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Sendportal\Base\Events\SubscriberAddedEvent;
 use Sendportal\Base\Facades\Sendportal;
@@ -23,11 +24,9 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SubscribersController extends Controller
 {
-    /** @var SubscriberTenantRepositoryInterface */
-    private $subscriberRepo;
+    private SubscriberTenantRepositoryInterface $subscriberRepo;
 
-    /** @var TagTenantRepository */
-    private $tagRepo;
+    private TagTenantRepository $tagRepo;
 
     public function __construct(SubscriberTenantRepositoryInterface $subscriberRepo, TagTenantRepository $tagRepo)
     {
@@ -152,7 +151,7 @@ class SubscribersController extends Controller
      * @throws WriterNotOpenedException
      * @throws Exception
      */
-    public function export()
+    public function export(): RedirectResponse
     {
         $subscribers = $this->subscriberRepo->all(Sendportal::currentWorkspaceId(), 'id');
 

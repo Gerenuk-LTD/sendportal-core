@@ -17,11 +17,9 @@ use Sendportal\Base\Services\Tags\ApiTagService;
 
 class TagsController extends Controller
 {
-    /** @var TagTenantRepository */
-    private $tags;
+    private TagTenantRepository $tags;
 
-    /** @var ApiTagService */
-    private $apiService;
+    private ApiTagService $apiService;
 
     public function __construct(
         TagTenantRepository $tags,

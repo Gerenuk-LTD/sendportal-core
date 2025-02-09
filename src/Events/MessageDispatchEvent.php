@@ -2,6 +2,7 @@
 
 namespace Sendportal\Base\Events;
 
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -14,10 +15,7 @@ class MessageDispatchEvent
     use InteractsWithSockets;
     use SerializesModels;
 
-    /**
-     * @var Message
-     */
-    public $message;
+    public Message $message;
 
     /**
      * MessageDispatchEvent constructor
@@ -32,9 +30,9 @@ class MessageDispatchEvent
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel|array
     {
         return new PrivateChannel('channel-name');
     }

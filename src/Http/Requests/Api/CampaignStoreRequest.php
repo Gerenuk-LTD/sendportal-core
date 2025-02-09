@@ -15,10 +15,7 @@ use Sendportal\Base\Repositories\TagTenantRepository;
 
 class CampaignStoreRequest extends BaseCampaignStoreRequest
 {
-    /**
-     * @var CampaignTenantRepositoryInterface
-     */
-    protected $campaigns;
+    protected CampaignTenantRepositoryInterface $campaigns;
 
     public function __construct(CampaignTenantRepositoryInterface $campaigns)
     {

@@ -20,7 +20,7 @@ class FormServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Blade::component(TextField::class, 'sendportal.text-field');
         Blade::component(TextareaField::class, 'sendportal.textarea-field');
@@ -37,7 +37,7 @@ class FormServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
     }
 }

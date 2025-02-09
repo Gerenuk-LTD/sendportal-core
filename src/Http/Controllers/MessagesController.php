@@ -16,17 +16,13 @@ use Sendportal\Base\Services\Messages\DispatchMessage;
 
 class MessagesController extends Controller
 {
-    /** @var MessageTenantRepositoryInterface */
-    protected $messageRepo;
+    protected MessageTenantRepositoryInterface $messageRepo;
 
-    /** @var DispatchMessage */
-    protected $dispatchMessage;
+    protected DispatchMessage $dispatchMessage;
 
-    /** @var MergeContentService */
-    protected $mergeContentService;
+    protected MergeContentService $mergeContentService;
 
-    /** @var MergeSubjectService */
-    protected $mergeSubjectService;
+    protected MergeSubjectService $mergeSubjectService;
 
     public function __construct(
         MessageTenantRepositoryInterface $messageRepo,

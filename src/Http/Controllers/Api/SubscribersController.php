@@ -56,20 +56,20 @@ class SubscribersController extends Controller
     /**
      * @throws Exception
      */
-    public function show(int $id): SubscriberResource
+    public function show(string $email): SubscriberResource
     {
         $workspaceId = Sendportal::currentWorkspaceId();
 
-        return new SubscriberResource($this->subscribers->find($workspaceId, $id, ['tags']));
+        return new SubscriberResource($this->subscribers->findBy($workspaceId, 'email', $email, ['tags']));
     }
 
     /**
      * @throws Exception
      */
-    public function update(SubscriberUpdateRequest $request, int $id): SubscriberResource
+    public function update(SubscriberUpdateRequest $request, string $email): SubscriberResource
     {
         $workspaceId = Sendportal::currentWorkspaceId();
-        $subscriber = $this->subscribers->update($workspaceId, $id, $request->validated());
+        $subscriber = $this->subscribers->updateBy($workspaceId, 'email', $email, $request->validated());
 
         return new SubscriberResource($subscriber);
     }
@@ -77,10 +77,10 @@ class SubscribersController extends Controller
     /**
      * @throws Exception
      */
-    public function destroy(int $id): Response
+    public function destroy(string $email): Response
     {
         $workspaceId = Sendportal::currentWorkspaceId();
-        $this->apiService->delete($workspaceId, $this->subscribers->find($workspaceId, $id));
+        $this->apiService->delete($workspaceId, $this->subscribers->findBy($workspaceId, 'email', $email));
 
         return response(null, 204);
     }

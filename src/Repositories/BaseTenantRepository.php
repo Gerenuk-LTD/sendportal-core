@@ -262,6 +262,25 @@ abstract class BaseTenantRepository implements BaseTenantInterface
     }
 
     /**
+     * Update the model instance by field and value
+     *
+     * @param  int  $workspaceId
+     * @param  string  $field
+     * @param  string  $value
+     * @param  array  $data
+     * @return mixed
+     * @throws Exception
+     */
+    public function updateBy(int $workspaceId, string $field, string $value, array $data): mixed
+    {
+        $this->checkTenantData($data);
+
+        $instance = $this->findBy($workspaceId, $field, $value);
+
+        return $this->executeSave($workspaceId, $instance, $data);
+    }
+
+    /**
      * Save the model
      *
      * @param int $workspaceId
@@ -291,6 +310,22 @@ abstract class BaseTenantRepository implements BaseTenantInterface
     public function destroy(int $workspaceId, int $id): mixed
     {
         $instance = $this->find($workspaceId, $id);
+
+        return $instance->delete();
+    }
+
+    /**
+     * Delete a record by field and value
+     *
+     * @param  int  $workspaceId
+     * @param  string  $field
+     * @param  string  $value
+     * @return mixed
+     * @throws Exception
+     */
+    public function destroyBy(int $workspaceId, string $field, string $value): mixed
+    {
+        $instance = $this->findBy($workspaceId, $field, $value);
 
         return $instance->delete();
     }

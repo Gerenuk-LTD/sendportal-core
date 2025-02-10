@@ -136,6 +136,18 @@ interface BaseTenantInterface
     public function update(int $workspaceId, int $id, array $data): mixed;
 
     /**
+     * Update the model instance by a field and value
+     *
+     * @param  int  $workspaceId
+     * @param  string  $field
+     * @param  string  $value
+     * @param  array  $data
+     * @return mixed
+     * @throws Exception
+     */
+    public function updateBy(int $workspaceId, string $field, string $value, array $data): mixed;
+
+    /**
      * Delete a record
      *
      * @param int $workspaceId
@@ -144,6 +156,17 @@ interface BaseTenantInterface
      * @throws Exception
      */
     public function destroy(int $workspaceId, int $id): mixed;
+
+    /**
+     * Delete a record by a field and value
+     *
+     * @param  int  $workspaceId
+     * @param  string  $field
+     * @param  string  $value
+     * @return mixed
+     * @throws Exception
+     */
+    public function destroyBy(int $workspaceId, string $field, string $value): mixed;
 
     /**
      * Count of all records
